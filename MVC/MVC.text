@@ -1,0 +1,80 @@
+Pertemuan 1 ---------------------------------------------------------------------------------------------------
+Pendahuluan MVC (Model-View-Controller)
+Merupakan pola arsitektur pada perancangan perangkat lunak berorientasi objek.
+- tujuan MVC, dimana Memisahkan antara tampilan, data dan proses.
+Memiliki 3 Kompenen Utama
+1. Model(data) = Representasi Pengetahuan, Mengelola Bisnis, Logika Bisnis
+2. Controller(proses) = Perantara antara model dan view, menangani pemrosesan pada aplikasi, menangani aksi dari user
+3. View(tampilan) = Output, apa yang dilihat oleh user , Representasi visual dari model, lapisan Presentasi.
+
+-- Kenapa menggunakan MVC --
+1. Organisasi dan Struktur
+2. Pemisahan logic dan tampilan
+3. Perawatan Code atau maintaine
+4. Impelementasi konsep OOP yang sudah dipelajari
+5. Digunakan oleh banyak Web Application Framework yang populer
+
+FrameWork yang menerapkan MVC, tetapi arsitekturnya beda. 
+1. PHP = CodeIgniter , Laravel , Yii
+2. Java = Spring MVC, JSF, Struts
+3. Python = Django, CherryPy
+4. Ruby = Ruby on rails, sinatra
+5. Java Script = AngularJS, React , Backbone.JS
+
+untuk tampilan defaultnya akan memanggil home atau index dan kita membuat url rapi misal phpmvc/home/index => htaccess
+ketika tidak ada method maka method defaultnya yang tampil ya!
+phpmvc/about(controller)/index(method)/anom/gamer(parameter)
+
+Untuk FrameWork akan menerapkan konsep MVC tetapi lebih Kompleks :
+Contoh Framework dari CodeIgniter 3
++-----------+                                +------------+          Jika controller membutuhkan ini:
+| Index.php | ==> Rounting ==> Security ==>  |Application |  <====   (Model, Libraries,Helper, Plugins,Scripts)
+| Index.php |        V                       |Controller  |   ====>
+| Index.php | <==  Caching <==  View   <===  |            |
++-----------+                                +------------+
+
+
+Application Flow yang akan dibuat dalam playlist MVC Unpas
++-----------+                    +------------+           Jika controller membutuhkan ini:
+| Index.php | ==> Rounting ==>   |Application |  <====    (Models/database)
+| Index.php |                    |Controller  |   ====>
+| Index.php | <==   View   <===  |            |
++-----------+                     +------------+
+
+Petemuan 2 ------------------------------------------------------------------------------------------------------
+Persiapan file dan foldernya. ==>phpmvc
+folder public = untuk file-file yang bisa diakses user
+folder app = file-file yang menyimpan data mvc kita(backend) tidak bisa diakses oleh user
+folder core = inti dari MVC , bagaimana kita membuat routing ya gitu contohnya!
+folder controller = menyimpanan data controller
+folder models = menyimpan data Models
+folder views = antarmuka yang disajikan oleh controller ==> home untuk Representasikan beberapa method jika memiliki banyak ya contoh index.html,home.html
+Pertemuan 3 ------------------------------------------------------------------------------------------------------
+-- Routing --------------------------------------------------------------------------------------------------------------------------
+- Di pembelajaran kali ini membuat URL rapi atau Pretty URL, nah nanti sewaktu-waktu membuat class atau user yang 
+menginputkan maka url yang banyak itu akan disembunyikan
+
+-  Controller tidak ada maka Controller atau methodnya yang dipanggil hanya defautlnya 
+
+- membuat file htaccess = file yang bisa kita gunakan untuk memodifikasi konfigurasi dari server appache kita
+  diKonsep MVC memiliki banyak folder, User hanya boleh lihat folder Public saja dengan cara memblock accessnya
+
+Fungsi yang ada di file htaccess
+- Options-Indexes = user tidak boleh membuka index apapun dan memblock accessnya.
+- Options -Multiviews = untuk menghindari kesalahan atau ambigu ketika kita memanggil folder atau file public ini.
+- RewriteEngine on = kita akan menjalankan proses Rewrite, proses memiliki beberapa konfigurasi seperti dibawah ini
+- RewriteCond atau kondisi %{REQUEST_FILENAME} !-d = URL yang nanti user tulis itu kita abaikan foldernya(dir) 
+- RewriteCond %{REQUEST_FILENAME} !-f = URL yang nanti user tulis itu kita abaikan file(file)
+   membuat 2 yaitu file dan folder, itu akan membedakan Controller dan methodnya nanti
+- RewriteRule ^(.*)$ index.php?url=$1 [L] = Aturan menulis ulang dengan menggunakan ekpresi regget
+ tanda ^ = jika sudah difolder public maka isi / lalu ambil string yang ditulis user;
+ ^(.*)$ = ambil semua karakternya kecuali enter
+ index.php?url=$1 = sebagai placeholder saja dan $1 = jika sudah menulis file karakter semua( ^(.*)$) maka simpan disana
+ [L] = jika rule sudah terpenuhi jangan jalankan rule lain setelah ini, ini untuk menghindari orang yang melakukan sesuatu yang jahat
+
+
+ Pertemuan 4 ----------------------------------------------------------------------------------------------------------
+ -- Controller --
+ Petemuan sebelumnya kita sudah membuat url kita tulis menjadi elemen array dan dihubungkan ke Controller atau method
+
+-- menambahkan file Home.php di folder Controller
