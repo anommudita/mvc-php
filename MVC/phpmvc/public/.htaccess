@@ -1,6 +1,15 @@
 Options -Multiviews
 
+#menulis ulang
 RewriteEngine on
+
+# untuk memblok folder nama di url kalian
 RewriteCond %{REQUEST_FILENAME} !-d
+# untuk memblok nama file di url kalian
 RewriteCond %{REQUEST_FILENAME} !-f
+
+#aturan untuk menulis ulang
+#Aturan menulis ulang dengan menggunakan ekpresi regget
+#^(.*)$ = ambil semua karakternya kecuali enter sampai selesai
+# flag [L] = jika rule sudah terpenuhi jangan jalankan rule lain setelah ini, ini untuk menghindari orang yang melakukan sesuatu yang jahat
 RewriteRule ^(.*)$ index.php?url=$1 [L]
