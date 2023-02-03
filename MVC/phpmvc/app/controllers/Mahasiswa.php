@@ -81,24 +81,22 @@ class Mahasiswa extends Controller
     //method get data mahaisiswa
     public function getubah()
     {
-        echo $_POST['id'];
+        // echo $_POST['id'];
         // Mengecek apakah data yang tuliskan sudah masuk atau belum 
         // var_dump($_POST);
 
-        // jka lebih dari 0 berati data sudah ada karena diinputkan, lalu dilembarkan method tambahDataMahasiswa() di Model_Mahasiswa.php
-        // echo json_encode($this->model('Mahasiswa_model')->getMahasiswaById($_POST['id']));
+        // jka lebih dari 0 berati data sudah ada karena diinputkan (pasti 1 hasilnya), 
+        // lalu dilemparkan method tambahDataMahasiswa() di Model_Mahasiswa.php
+        // jscon_encode untuk mengubah data array assosiative menjadi json
+        echo json_encode($this->model('Mahasiswa_model')->getMahasiswaById($_POST['id']));
     }
 
 
     //method ubah data mahaisiswa
-    public function ubah($id)
+    // mirip seperti tambah
+    public function ubah()
     {
 
-
-        $data['mhs'] = $this->model('Mahasiswa_model')->getMahasiswaById($id);
-        $this->view('templates/header', $data);
-        $this->view('mahasiswa/index', $data);
-        $this->view('templates/footer');
 
         // jka lebih dari 0 berati data sudah ada karena diinputkan, lalu dilembarkan method tambahDataMahasiswa() di Model_Mahasiswa.php
         if ($this->model('Mahasiswa_model')->ubahDataMahasiswa($_POST) > 0) {

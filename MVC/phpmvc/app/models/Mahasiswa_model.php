@@ -147,10 +147,8 @@ class Mahasiswa_model
 
         // binding
         // akan menuju ke parameter data dan nilai tersebut merujuk ke name htmlnya 
-        $this->db->bind(
-            'nama',
-            $data['nama']
-        );
+
+        $this->db->bind('nama', $data['nama']);
         $this->db->bind('nim', $data['nim']);
         $this->db->bind('email', $data['email']);
         $this->db->bind('jurusan', $data['jurusan']);

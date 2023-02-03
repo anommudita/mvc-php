@@ -13,18 +13,32 @@ $(function(){
         $('#formModalLabel').html('Tambah Data Mahasiswa');
         // tipe submit diubah menjadi tambah data
         $('.modal-footer button[type=submit]').html('Tambah Data');
+
+        // menghapus value dari inputan, data menjadi kosong di form dengan cara kita timpa dengan string kosong
+        $('#nama').val('');
+                $('#nim').val('');
+                $('#email').val('');
+                $('#jurusan').val('');
+                $('#id').val('');
     });
 
 
     // ketika mengklik button ubah data
     $('.tampilModalUbah').on('click', function(){
+
+
+
         // console.log('ok');
         $('#formModalLabel').html('Ubah Data Mahasiswa');
         // tipe submit diubah menjadi ubah data
         $('.modal-footer button[type=submit]').html('Ubah Data');
 
 
-        // $('modal-body form').attr('action', 'http://localhost/phpmvc/public/mahasiswa/ubah');
+
+        
+        // mengubah form actionnya menjadi ubah data
+        $('.modal-body form').attr('action', 'http://localhost/mvc-php/MVC/phpmvc/public/mahasiswa/ubah');
+
 
         // mengambil data dari button ubah dengan jquery where id
         // this = tombol ini yang di klik didalam kondisi ini!
@@ -35,23 +49,28 @@ $(function(){
         // parameter ketuker tidak masalah bro!
         $.ajax({
 
-            url: 'http://localhost/phpmvc/public/mahasiswa/getubah',
+            // url yang akan diakses method getubah
+            url: 'http://localhost/mvc-php/MVC/phpmvc/public/mahasiswa/getubah',
+
             // datanya berupa object javascript dengan key id diatas
             data: {id : id},
             // datanya dikirimkan lewat method post
             // akan ditangkap menggunakan $_POST
-            method: 'POST',
+            method: 'post',
+            
             // data yang dikirimkan berupa json
-            // dataType: 'json',
+            dataType: 'json',
+
             // jika berhasil apa yang dilakukan
             // data diminta melalui url diatas lalu akan dikembalikan ke $data
             success: function(data){
+                // data bertipe json
                 console.log(data);
-                // $('#nama').val(data.nama);
-                // $('#nrp').val(data.nrp);
-                // $('#email').val(data.email);
-                // $('#jurusan').val(data.jurusan);
-                // $('#id').val(data.id);
+                $('#nama').val(data.nama);
+                $('#nim').val(data.nim);
+                $('#email').val(data.email);
+                $('#jurusan').val(data.jurusan);
+                $('#id').val(data.id);
             }
 
         });

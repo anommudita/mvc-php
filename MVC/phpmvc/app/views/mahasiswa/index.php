@@ -84,7 +84,9 @@
                     <!-- konten Form -->
                     <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
 
+                        <!-- Hidden Input -->
                         <input type="hidden" name="id" id="id">
+                        <!-- End Hidden Input -->
                         <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
                             <input type="text" class="form-control" id="nama" name="nama">

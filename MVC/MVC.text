@@ -254,7 +254,7 @@ Action :
 AJAX
 2. Menambahkan button ubah
 3. Memanggil Modal Box bootstrap dengan cara panggil class dari form tambah
-4. Membuat file js.script dan memanggil file script.js di bagian footer templates
+4. Membuat file script.js dan memanggil file script.js di bagian footer templates
 5. Membuat program sederhana untuk mengetes apakah file JS sudah masuk atau belum
 6. Kalau Bisa sih belajar DOM JS sehingga website yang kita develop interaktif (hubungan dua arah)
 7. Memberikan class pada button ubah bernama tampilModalUbah di index.php Mahasiswa
@@ -267,9 +267,32 @@ dengan buttonp[type=submit];
 tida me relod semua halamannya.
 13 . Menambahakan code in data-id="<?=$mhs['id'];?> di button ubah, dalam hal ini membuat jquery menangkap datanya agar jquery tahu 
 id apa aja yang mau di ambil
+14. membuat variable di script.js   .const id = $this.data('id'); ==> menyimpan id dari setelah kita mengklik tombol ubah
+15. Membuat file function $.ajax di script.js dan untuk url-nya tidak boleh salah ya!
+16. membuat method getubah Controller Mahasiswa. Fungsi ini untuk menampilkan data sesuai id yang kita pilih bro
+17. Membuat tombol Ubah Data. berfungsi untuk ketika mengklik tombol tersebut action yang dijalankan yaitu action : ubah bukan tambah
+18. membuat method ubah di Controller Mahasiswa. Fungsinya untuk membuat kondisi flash message dan jika benar maka akan dilempar ke 
+method ubahDataMahasiswa di mahasiswa_model. ==> untuk aksi ubah ya!
+19 membuat method ubahDataMahasiswa. Yang berisikan code update MYSQL.
+20. Jangan lupa jika mengklik tomboh tambah data maka data yang ditampilkan di form harus kosong ya!
 
 
 Pertemuan 13 ---------------------------------------------------------------------------------------------------------------
 -- Seaching Data -- 
-faadadad
+Membuat pencari data sesuai isi data di table mahasiswa
+
+action :
+1. membuat div kolom sama dengan flash (static method)
+2. form action menuju function cari dan methodnya menggunakan post
+3. kontennya isi input group di bootstrap. sudah jadi satu dengan input dan tombol... isi autocomplete supaya tidak terlihat history
+data yang kita cari sebelumnya
+4. inputnya berikan name dan id nya dengan nama 'keyword'
+5. untuk buttonnya. ganti type menjadi type='submit' dan id='tombolCari'
+6. membuat method cari di controller mahasiswa. Methodnya sama dengan Index() dan merujuka ke cariDataMahasiswa ==> jika diklik tombolnya
+7. membuat method cariDataMahasiswa di mahasiswa_model.php yang berisikan query searcing data di MYSQL
+8. maka perulangan sesuai dengan yang kita cari dan kita tidak mengubah lagi index()
+
+
+
+
 
